@@ -17,11 +17,12 @@ print("""동해물과 백두산이 마르고 닳도록
 하느님이 보우하사 우리나라 만세
 무궁화 삼천리 화려강산
 대한사람 대한으로 길이 보전하세""")
-``` 
->동해물과 백두산이 마르고 닳도록   
+
+동해물과 백두산이 마르고 닳도록   
 하느님이 보우하사 우리나라 만세   
 무궁화 삼천리 화려강산   
 대한사람 대한으로 길이 보전하세
+```
 
 ### (3) 문자열 연산자
 >문자열 연결 연산자: +   
@@ -65,26 +66,100 @@ format()을 이용하여 숫자와 문자를 다양한 형태로 출력
 
 ```python
 string_a = "{}".format(10)
-
 print(string_a)
 print(type(string_a))
+
+10   
+<class 'str'>
 ```
->10   
-> <class 'str'>
 
-- upper(): 문자열의 알파벳을 대문자로
-- lower(): 문자열의 알파벳을 소문자로
+#### cf) 또다른 포매팅(formating) 방법
+#### - %
+```python
+name: Yeji Shin
+age: 22
+weight: 47.3
+print("My name is %s, age: %d, weight: %f"%(name, age, weight))
 
-![20220105_202812.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/de3971af-21a1-47c6-bee2-3f3edd5ad2d6/20220105_202812.jpg)
+My name is Yeji Shin, age: 22, weight: 47.3
+```
 
-- strip(): 문자열 양옆의 공백 제거
-- find(): 문자열 내부에 특정 문자가 어디에 위치하는지 확인
-- in 연산자: 문자열 내부에 어떤 문자열이 있는지 확인
-- split(): 문자열울 특정한 문자로 자름
+#### - f-string
+```python
+s = 'coffee'
+n = 5
+print(f"저는 {s}를 좋아합니다. 하루 {n}잔 마셔요.")
 
+저는 coffee를 좋아합니다. 하루 5잔 마셔요. 
+``` 
+>출처) https://blockdmask.tistory.com/429
+
+### (2) 대소문자 바꾸기: upper()와 lower()
+upper(): 문자열의 알파벳을 대문자로    
+lower(): 문자열의 알파벳을 소문자로
+
+```python
+a = "Hello World!"
+print(a.upper())
+print(a.lower())
+
+HELLO WORLD!   
+hello wolrd!
+```
+
+### (3) 문자열 양옆의 공백 제거하기
+strip(): 문자열 양옆의 공백 제거
+
+```python
+input_a = """
+     안녕하세요
+문자열의 함수를 알아봅니다
+"""
+print(input_a)
+print(input_a.strip())
+
+     안녕하세요
+문자열의 함수를 알아봅니다
+
+안녕하세요
+문자열의 함수를 알아봅니다
+```
+
+### (4) 문자열 찾기: find()와 rfind()
+find(): 왼쪽부터 찾아서 처음 등장하는 위치 확인
+rfind(): 오른쪽부터 찾아서 처음 등장하는 위치 확인
+
+```python
+output_a = "안녕안녕하세요".find("안녕")
+output_b = "안녕안녕하세요".find("안녕")
+print(output_a)
+print(output_b)
+
+0
+2
+```
+
+### (5) 문자열 in 연산자
+in 연산자: 문자열 내부에 어떤 문자열이 있는지 확인
+```python
+print("안녕" in "안녕하세요")
+print("잘자" in "안녕하세요")
+
+True   
+False
+```
+
+### (6) 문자열 자르기: split()
+split(): 문자열울 특정한 문자로 자름
+```python
+a = "10 20 30 40 50".split(" ")
+print(a)
+
+['10', '20', '30', '40', '50']
+```
 ---
 
-## 2) 조건문
+# 2. 조건문
 
 불 자료형과 if 조건문
 
@@ -109,7 +184,7 @@ if~else와 elif 구문
 
 ---
 
-## 3) 반복문
+# 3. 반복문
 
 리스트와 반복문
 
