@@ -161,19 +161,13 @@ print(a)
 
 # 2. 조건문
 
-불 자료형과 if 조건문
+## 1) 불 자료형과 if 조건문
 
 - 불: 참(True)과 거짓(False) 값만 가질 수 있음
 - 비교연산자 ex) ==, !=, <, >, <=, >=
 - 논리연산자 ex) not, and, or
 - if 조건문 뒤에는 반드시 콜론(:)을 붙여야 함
 - 날짜/시간 활용하기
-
-![20220109_184139.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3eaed1fb-2af9-47d6-bbc9-9ebf3458f5fa/20220109_184139.jpg)
-
-![20220109_184234.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/db84bb2c-2ffc-49c5-8e24-eb3b930f1407/20220109_184234.jpg)
-
-![20220109_184303.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/82f367b9-f9a0-40f2-a0f0-a05fa3cd84f0/20220109_184303.jpg)
 
 if~else와 elif 구문
 
@@ -186,7 +180,7 @@ if~else와 elif 구문
 
 # 3. 반복문
 
-리스트와 반복문
+## 1) 리스트와 반복문
 
 - 리스트: 여러 가지 자료를 저장할 수 있는 자료
 - [ ] 에 자료(요소)를 쉼표로 구분해서 입력
@@ -202,7 +196,7 @@ if~else와 elif 구문
 - in/not in 연산자: 특정 값이 리스트 내부에 있는지 확인 ex) 값 in/not in 리스트
 - for 반복문 ex) for 반복자 in 반복할 수 있는 것: 코드
 
-딕셔너리와 반복문
+## 2) 딕셔너리와 반복문
 
 - 딕셔너리: 키를 기반으로 값을 지정하는 것
 
