@@ -453,7 +453,7 @@ r_num = reversed(numbers)
 print(next(r_num))
 print(next(r_num))
 print(next(r_num))
-print(next(r_num))
+print(next(r_num)) 
 
 5
 4
