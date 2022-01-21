@@ -76,12 +76,12 @@ print(type(string_a))
 #### cf) 또다른 포매팅(formating) 방법
 #### - %
 ```python
-name: Yejiii
+name: Yeziii
 age: 22
 weight: 47.3
 print("My name is %s, age: %d, weight: %f"%(name, age, weight))
 
-My name is Yejiii, age: 22, weight: 47.3
+My name is Yeziii, age: 22, weight: 47.3
 ```
 
 #### - f-string
