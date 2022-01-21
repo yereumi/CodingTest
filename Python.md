@@ -42,8 +42,8 @@ print("""동해물과 백두산이 마르고 닳도록
 ## 3) 변수와 입력
 
 ### (1) 변수 만들기/사용하기
->변수 = 값   
-> ex) pi = 3.141592
+변수 = 값   
+ex) pi = 3.141592
 
 ### (2) 복합 대입 연산자
 기존의 연산자와 조합해서 사용
@@ -92,7 +92,7 @@ print(f"저는 {s}를 좋아합니다. 하루 {n}잔 마셔요.")
 
 저는 coffee를 좋아합니다. 하루 5잔 마셔요. 
 ``` 
->출처) https://blockdmask.tistory.com/429
+출처) https://blockdmask.tistory.com/429
 
 ### (2) 대소문자 바꾸기: upper()와 lower()
 upper(): 문자열의 알파벳을 대문자로    
@@ -163,18 +163,49 @@ print(a)
 
 ## 1) 불 자료형과 if 조건문
 
-- 불: 참(True)과 거짓(False) 값만 가질 수 있음
-- 비교연산자 ex) ==, !=, <, >, <=, >=
-- 논리연산자 ex) not, and, or
-- if 조건문 뒤에는 반드시 콜론(:)을 붙여야 함
-- 날짜/시간 활용하기
+### (1) 불 만들기: 비교 연산자, 논리 연산자
+불: 참(True)과 거짓(False) 값만 가질 수 있음
+>비교 연산자 ex) ==, !=, <, >, <=, >=    
+> 논리 연산자 ex) not, and, or   
 
-if~else와 elif 구문
+### (2) if 조건문이란?
+```python
+if 불 값이 나오는 표현식:
+    불 값이 참일 때 실행할 문장
+```
 
-- else 구문: if 조건문의 조건이 거짓일 때 실행
-- elif 구문: 세 개 이상의 조건을 연결해서 사용
-- False로 변환되는 값: None, 0, 0.0, 빈 컨테이너(빈 문자열, 빈 바이트열, 빈 리스트, 빈 튜플, 빈 딕셔너리 등)
-- pass: 진짜로 아무것도 안함, 곧 개발하겠음
+if 조건문 뒤에는 반드시 콜론(:)을 붙여야 함
+
+### (3) 날짜/시간 활용하기
+```python
+import datetime   #모듈을 이용
+now = datetime.datetime.now()
+print(now.year, "년")
+print(now.month, "월")
+print(now.day, "일")
+print(now.hour, "시")
+print(now.minute, "분")
+print(now.second, "초")
+
+2022년
+1 월
+22 일
+00 시
+15 분
+43 초
+```
+
+## 2) if~else와 elif 구문
+
+### (1) else, elif 구문
+else 구문: if 조건문의 조건이 거짓일 때 실행    
+elif 구문: 세 개 이상의 조건을 연결해서 사용
+
+### (2) False로 변환되는 값
+None, 0, 0.0, 빈 컨테이너(빈 문자열, 빈 바이트열, 빈 리스트, 빈 튜플, 빈 딕셔너리 등)
+
+### (3) pass 키워드
+pass: 진짜로 아무것도 안함, 곧 개발하겠음
 
 ---
 
@@ -182,56 +213,251 @@ if~else와 elif 구문
 
 ## 1) 리스트와 반복문
 
-- 리스트: 여러 가지 자료를 저장할 수 있는 자료
-- [ ] 에 자료(요소)를 쉼표로 구분해서 입력
-- 인덱스: [ ] 안에 들어간 숫자 ex) list_a[0]
-- 음수 인덱스는 뒤에서부터 선택
-- 리스트 연산자: 연결(+), 반복(*), len()
-- append(): 리스트 뒤에 요소 추가 ex) 리스트명.append(요소)
-- insert(): 리스트의 중간에 요소 추가 ex) 리스트명.insert(위치, 요소)
-- del: 리스트의 특정 인덱스에 있는 요소 제거 ex) del 리스트명[인덱스]
-- pop(): 제거할 위치에 있는 요소 제거, 매개변수 미입력 시 마지막 요소 제거 ex) 리스트명.pop(인덱스)
-- remove(): 값으로 제거 ex) 리스트.remove(값)
-- clear(): 리스트 내부의 요소 모두 제거 ex) 리스트.clear()
-- in/not in 연산자: 특정 값이 리스트 내부에 있는지 확인 ex) 값 in/not in 리스트
-- for 반복문 ex) for 반복자 in 반복할 수 있는 것: 코드
+### (1) 리스트 선언하고 요소에 접근하기
+리스트(list): 여러 가지 자료를 저장할 수 있는 자료  
+요소(element): 대괄호[ ] 내부에 넣는 자료
+인덱스: [ ] 안에 들어간 숫자 
+```python
+list_a[0]
+```
+음수 인덱스는 뒤에서부터 선택
+
+### (2) 리스트 연산자: 연결(+), 반복(*), len()
+
+### (3) 리스트에 요소 추가하기: append, insert
+append(): 리스트 뒤에 요소 추가   
+insert(): 리스트의 중간에 요소 추가
+```python
+리스트명.append(요소)
+리스트명.insert(위치, 요소)
+```
+
+### (4) 리스트에 요소 제거하기
+- 인덱스로 제거하기
+>del: 리스트의 특정 인덱스에 있는 요소 제거   
+> pop(): 제거할 위치에 있는 요소 제거, 매개변수 미입력 시 마지막 요소 제거
+```python
+del 리스트명[인덱스]
+리스트명.pop(인덱스)
+```
+
+- 값으로 제거하기 
+>remove(): 값으로 제거
+```python
+리스트.remove(값)
+```
+
+- 모두 제거하기
+>clear(): 리스트 내부의 요소 모두 제거
+```python
+리스트.clear()
+```
+
+### (5) 리스트 내부에 있는지 확인하기: in/not in 연산자
+in/not in 연산자: 특정 값이 리스트 내부에 있는지 확인 
+```python
+값 in/not in 리스트
+```
+
+### (6) for 반복문
+```python
+for 반복자 in 반복할 수 있는 것: 
+    코드
+```
 
 ## 2) 딕셔너리와 반복문
 
-- 딕셔너리: 키를 기반으로 값을 지정하는 것
+### (1) 딕셔너리 선언하기 
+딕셔너리: 키를 기반으로 값을 지정하는 것
+```python
+dict_a = {
+    "name": "어벤져스 엔드게임",
+    "type": "히어로 무비"
+}
+```
 
-![20220118_185704.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e1795ba6-e850-4f14-bf81-3117623614d1/20220118_185704.jpg)
+### (2) 딕셔너리 요소에 접근하기
+```python
+print(dict_a)
 
-- 딕셔너리 출력 ex) dict_a, dict_a[”name”]
-- 딕셔너리에 값 추가: 딕셔너리[새로운 키] = 새로운 값
-- 딕셔너리에 값 제거: del 딕셔너리[키]
-- in 키워드:  딕셔너리 내부에 키가 있는지 없는지 확인
-- get(): 존재하지 않는 키에 접근, 존재하지 않으면 None 출력 ex) 딕셔너리.get(키)
-- for 반복문 ex) for 키 변수 in 딕셔너리: 코드
+{'name': '어벤져스 엔드게임', 'type': '히어로 무비'}
+```
 
-반복문과 while 반복문
+### (3) 딕셔너리에 값 추가하기/제거하기
+```python
+딕셔너리[새로운 키] = 새로운 값   #추가
+del 딕셔너리[제거할 키]   #제거
+```
 
-- range(A): 0부터 A-1까지
-- range(A, B): A부터 B-1까지
-- range(A, B, C): A부터 B-1까지 C만큼
-- 리스트 안에 범위: list(range(10)) ex) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-- for 반복문 ex) for 숫자 변수 in 범위: 코드
-- for 반복문과 리스트 조합 ex) for element in 리스트명
-- reversed(): 역반복문 ex) for i in reversed(range(A)): 코드
-- while 반복문 ex) while 불 표현식: 문장
+### (4) 딕셔너리 내부에 키가 있는지 확인하기
+in 키워드:  딕셔너리 내부에 키가 있는지 없는지 확인    
+get(): 존재하지 않는 키에 접근, 존재하지 않으면 None 출력
+```python
+if key in dicionary:
+    print(dictionary[key])
+    
+딕셔너리.get(키)
+```
+### (5) for 반복문 
+```python
+for 키 변수 in 딕셔너리:
+    코드
+```
 
-![20220119_150847.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a67d40b9-294d-496f-9f0d-cd3fb32b4b74/20220119_150847.jpg)
+## 3) 반복문과 while 반복문
 
-- Ctrl + C로 강제 종료
+### (1) 범위
+>range(A): 0부터 A-1까지    
+> range(A, B): A부터 B-1까지    
+> range(A, B, C): A부터 B-1까지 C만큼    
+> 리스트 안에 범위: list(range(10)) ex) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-![20220119_151232.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8d4b065d-7a68-4c63-9860-81326c2f2d14/20220119_151232.jpg)
+### (2) for 반복문 
+```python
+for 숫자 변수 in 범위:
+    코드
+```
 
-![20220119_151311.jpg](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/f365031f-4034-4050-9b03-5268bb9a173b/20220119_151311.jpg)
+### (3) for 반복문과 리스트 조합 
+```python
+for element in 리스트명:
+    코드
+```
 
-- 유닉스 타임: 세계 표준시 ex) import time
-- break: 현재 반복문을 벗어날 때 사용
-- continue: 현재 반복문을 생략하고, 다음 반복으로 넘어갈 때 사용
+### (4) for 반복문: 반대로 반복하기
+reversed(): 역반복문 
+```python
+for i in reversed(range(A)):
+    코드
+```
 
-- format 함수
+### (5) while 반복문 
+```python
+while 불 표현식:
+    문장
+```
+```python
+while True:
+    print(".", end = "")   
+    #end가 "\n"이라 줄바꿈이 일어나는데 빈 문자열 ""로 바꿔서 줄바꿈이 일어나지 않게 함
+```
+무한 반복될 경우 Ctrl + C로 강제 종료
 
-[https://blockdmask.tistory.com/424](https://blockdmask.tistory.com/424)
+### (6) while 반복문: for 반복문처럼 사용하기
+```python
+i = 0
+while i <3:
+    print("{}번째 반복입니다.".format(i))
+    i += 1
+
+0번째 반복입니다.
+1번째 반복입니다.
+2번째 반복입니다.
+```
+
+### (7) while 반복문: 상태를 기반으로 반복하기
+```python
+list_test = [1, 2, 1, 2]
+value = 2
+while value in list_test:
+    list_test.remove(value)
+print(list_test)
+
+[1, 1]
+```
+
+### (8) while 반복문: 시간을 기반으로 반복하기
+유닉스 타임: 세계 표준시
+```python
+import time
+```
+
+### (9) while 반복문: break 키워드/continue 키워드
+break: 현재 반복문을 벗어날 때 사용   
+continue: 현재 반복문을 생략하고, 다음 반복으로 넘어갈 때 사용
+
+## 4) 문자열, 리스트, 딕셔너리와 관련된 기본 함수
+
+### (1) 리스트에 적용할 수 있는 기본 함수: min(), max(), sum()
+min(): 리스트 내부에서 최솟값을 찾음    
+max(): 리스트 내부에서 최댓값을 찾음    
+sum(): 리스트 내부에서 값을 모두 더함
+
+### (2) reversed() 함수로 리스트 뒤집기
+reversed(): 리스트에서 요소의 순서를 뒤집고 싶을 때 사용
+```python
+numbers = [1, 2, 3, 4, 5]
+for i in reversed(numbers): 
+    print("첫 번째 반복문: {}".format(i))
+#reversed() 함수와 반복문을 조합할 때는 반복문 구문 내부에 reversed 함수를 곧바로 넣어 사용함
+
+첫 번째 반복문: 5
+첫 번째 반복문: 4
+첫 번째 반복문: 3
+첫 번째 반복문: 2
+첫 번째 반복문: 1
+```
+
+### (3) enumerate() 함수와 반복문 조합하기
+```python
+example_list = ["요소A", "요소B", "요소C"]
+for i, value in enumerate(example_list)):   #enumerate() 함수를 사용하면 반복 변수를 이런 형태로 넣을 수 있음
+    print("{}번째 요소는 {}입니다."format(i, value))
+
+0번째 요소는 요소A입니다.
+1번째 요소는 요소B입니다. 
+2번째 요소는 요소C입니다.
+```
+
+### (4) 리스트 내포
+```python
+리스트 이름 = [표현식 for 반복자 in 반복할 수 있는 것]
+```
+```python
+array = [i * i for i in range(0, 20, 2)]
+#최종 결과를 앞에 작성
+print(array)
+
+[0, 4, 16, 36, 64, 100, 144, 196, 256, 324]
+```
+
+```python
+리스트 이름 = [표현식 for 반복자 in 반복할 수 있는 것 if 조건문]
+```
+```python
+array = ["사과", "자두", "초콜릿", "바나나", "체리"]
+output = [fruit for fruit in array if fruit != "초콜릿"]
+print(output)
+
+['사콰', '자두', '바나나', '체리']
+```
+
+#### cf) 문자열의 join() 함수
+```python
+문자열.join(문자열로 구성된 리스트)
+```
+```python
+print("::".join(["1", "2", "3", "4", "5"]))
+
+1::2::3::4::5
+```
+
+#### cf) 이터레이터
+이터러블(iterable): 반복할 수 있는 것
+```python
+for 반복자 in 반복할 수 있는 것
+```
+```python
+numbers = [1, 2, 3, 4, 5]
+r_num = reversed(numbers)
+print(next(r_num))
+print(next(r_num))
+print(next(r_num))
+print(next(r_num))
+
+5
+4
+3
+2
+
+```
