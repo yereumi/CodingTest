@@ -1,3 +1,5 @@
+*혼자 공부하는 파이썬을 참고하여 정리했습니다*
+
 # 1. 자료형
 
 ## 1) 자료형과 문자열
@@ -460,4 +462,196 @@ print(next(r_num))
 3
 2
 
+```
+
+# 4. 함수
+
+## 1) 함수 만들기
+
+### (1) 함수의 기본 
+```python
+def 함수 이름():
+    문장
+```
+```python
+def print_3_times():
+    print("안녕하세요")
+    print("안녕하세요")
+    print("안녕하세요")
+print_3_times()
+
+안녕하세요
+안녕하세요
+안녕하세요
+```
+
+### (2) 함수에 매개변수 만들기
+```python
+def 함수 이름(매개변수, 매개변수, ...):
+    문장
+```
+```python
+def print_n_times(value, n):
+    for i in range(n):
+        print(value)
+print_n_times("안녕하세요", 5)
+
+안녕하세요
+안녕하세요
+안녕하세요
+안녕하세요
+안녕하세요
+```
+매개변수의 개수는 꼭 맞춰줘야 함
+
+### (3) 가변 매개변수
+가변 매개변수: 매개변수를 원하는 만큼 받을 수 있는 함수
+```python
+def 함수 이름(매개변수, 매개변수, ..., *가변 배개변수):
+    문장
+```
+- 가변 매개변수 뒤에는 일반 매개변수가 올 수 없음
+- 가변 매개변수는 하나만 사용 가능
+```python
+def print_n_times(n, *values):
+    for i in range(n):
+        for value in values:
+            print(value)
+        print()
+print_n_times(2, "안녕하세요", "즐거운", "파이썬 프로그래밍")
+
+안녕하세요
+즐거운
+파이썬 프로그래밍
+
+안녕하세요
+즐거운
+파이썬 프로그래밍
+```
+
+### (4) 기본 매개변수
+기본 매개변수: 매개변수를 입력하지 않았을 경우 매개변수에 들어가는 기본값
+- 기본 매개변수 뒤에는 일반 매개변수가 올 수 없음
+```python
+def print_n_times(value, n=2)   #n=2가 기본 매개변수
+    for i in range(n):
+        print(value)
+print_n_times("안녕하세요")
+
+안녕하세요 
+안녕하세요
+```
+
+### (5) 키워드 매개변수
+- 기본 매개변수가 가변 매개변수보다 앞에 올 때
+```python
+def print_n_times(n=2, *values):
+    for i in range(n):
+        for value in values:
+            print(value)
+        print()
+print_n_times("안녕하세요", "즐거운", "파이썬 프로그래밍")
+
+오류 발생
+#기본 매개변수는 가변 매개변수 앞에 써도 의미 없음
+```
+
+- 가변 매개변수가 기본 매개변수보다 앞에 올 때
+```python
+def print_n_times(*value, n=2):
+    for i in range(n):
+        for value in values:
+            print(value)
+        print()
+print_n_times("안녕하세요", "즐거운", "파이썬 프로그래밍", 3)
+
+안녕하세요
+즐거운
+파이썬 프로그래밍
+3
+
+안녕하세요
+즐거운
+파이썬 프로그래밍
+3
+```
+
+- 키워드 매개변수: 매개변수 이름을 지정해서 입력하는 매개변수
+```python
+def print_n_times(*value, n=2):
+    for i in range(n):
+        for value in values:
+            print(value)
+        print()
+print_n_times("안녕하세요", "즐거운", "파이썬 프로그래밍", n=3)
+#n=3이 키워드 매개변수
+#n=2라는 기본 매개변수에 키워드 매개변수를 지정하여 새로운 인자를 줌
+
+안녕하세요
+즐거운
+파이썬 프로그래밍
+
+안녕하세요
+즐거운
+파이썬 프로그래밍
+
+안녕하세요
+즐거운
+파이썬 프로그래밍
+```
+
+### (6) 리턴
+- 자료 없이 리턴하기   
+return 키워드를 만나는 순간 함수 종료
+```python
+def return_test():
+    print("A 위치입니다.")
+    return  
+    print("B 위치입니다.")
+return_test()
+
+A 위치입니다.
+```
+
+- 자료와 함께 리턴하기
+```python
+def return_test():
+    return 100
+value = return_test()
+print(value)
+
+100
+```
+
+- 아무것도 리턴하지 않기    
+None 출력
+```python
+def return_test()
+    return  
+value = return_test()
+print(value)
+
+None
+```
+
+### (7) 기본적인 함수의 활용
+```python
+def 함수(매개변수):
+    변수 = 초깃값
+    여러 가지 처리
+    return 변수
+```
+```python
+def sum_all(start=0, end=100, step=1):
+    output = 0
+    for i in range(start, end+1, step):
+        output += i
+        return output
+print("A. ", sum_all(0, 100, 10))
+print("B. ", sum_all(end=100))
+print("C. ", sum_all(end=100, step=2))
+
+A. 550
+B. 5050
+C. 2550
 ```
