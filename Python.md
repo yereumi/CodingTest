@@ -655,3 +655,100 @@ A. 550
 B. 5050
 C. 2550
 ```
+
+## 2) 함수의 활용
+
+### (1) 재귀 함수
+팩토리얼: n! = n * (n-1) * (n-2) * ... * 1    
+- 반복문으로 팩토리얼 구하기
+```python
+def factorial(n):
+    output = 1
+    for i in range(1, n+1):
+        output *= i
+    return output
+print("3!:", factorial(3))
+
+3! = 6
+```
+
+- 재귀 함수로 팩토리얼 구하기
+```python
+def factorial(n):
+    if n == 0:
+        return 1
+    else:
+        return n * factorial(n-1)
+print("3!:". factorial(3))
+
+3! = 6
+```
+
+### (2) 재귀 함수의 문제
+피보나치 수열
+```python
+def fibonacci(n):
+    if n == 1:
+        return 1
+    if n == 2:
+        return 1
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+print("fibonacci(1):", fibonacci(1))
+print("fibonacci(2):", fibonacci(2))
+print("fibonacci(3):", fibonacci(3))
+print("fibonacci(4):", fibonacci(4))
+print("fibonacci(5):", fibonacci(5))
+
+fibonacci(1): 1
+fibonacci(2): 1
+fibonacci(3): 2
+fibonacci(4): 3
+fibonacci(5): 5
+```
+트리(tree) - 노드(node) -  리프(leaf)
+
+global 키워드: 함수 내부에서 함수 외부에 있는 변수를 참조할 때 사용
+```python
+global 변수 이름
+```
+
+메모(memo): 딕셔너리를 사용해서 한 번 계산한 값을 저장하는 것
+```python
+dictionary = {
+    1: 1, 
+    2: 1
+}
+def fibonacci(n):
+    if n in dictionary:
+        return dictionary[n]
+    else:
+        output = fibonacci(n-1) + fibonacci(n-2)
+        dictionary[n] = output
+        return output
+```
+
+### (3) 조기 리턴
+```python
+def fibonacci(n):
+    if n in dictionary:
+        return dictionary[n]
+    output = fibonacci(n-1) + fibonacci(n-2)
+    dictionary[n] = output
+    return output
+```
+
+### (4) 코드에 이름 붙이기
+가독성 때문에 함수를 많이 사용함
+
+1. 주석 사용하기
+2. 함수 활용하기
+
+### (5) 코드 유지보수
+```python
+def get_circumference(radius):
+    return 2 * 3.14 * radius
+def get_circle_area(radius):
+    return 3.14 * radius * radius
+#3.14를 pi로 설정해주면 나중에 유지보수를 하기 편함
+```
