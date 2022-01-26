@@ -752,3 +752,233 @@ def get_circle_area(radius):
     return 3.14 * radius * radius
 #3.14를 pi로 설정해주면 나중에 유지보수를 하기 편함
 ```
+
+## 3) 함수 고급
+
+### (1) 튜플 
+튜플: 한번 결정된 요소를 바꿀 수 없는 자료형
+```
+(데이터, 데이터, 데이터, ...)
+```
+```python
+tuple_test = (10, 20, 30)
+print(tuple_test[1])
+
+20
+```
+
+요소를 하나만 가지는 튜플
+```python
+(273) (X)   #273이란 숫자를 괄호로 감싼 것으로 인식
+(273, ) (O)
+```
+
+리스트와 튜플은 할당 구문으로 사용 가능
+```python
+[a, b] = [10, 20]
+(c, d) = (10, 20)
+print("a:", a)
+print("b:", b)
+print("c:", c)
+print("d:", d)
+
+a: 10
+b: 20
+c: 10
+d: 20
+```
+
+튜플은 괄호를 생략할 수 있음
+```python
+tuple_test = 10, 20, 30, 40
+print("tuple_test:", tuple_test)
+
+tuple_test: (10, 20, 30, 30)
+```
+```python
+a, b = 10, 20
+a, b= b, a   #값 교환
+print("a:", a)
+print("b:", b)
+
+a: 20
+b: 10
+```
+
+튜플과 함수
+```python
+def test():
+    return (10, 20)
+a, b = test()
+print("a:", a)
+print("b:", b)
+
+a: 10
+b: 20
+```
+
+### (2) 람다
+함수의 매개변수로 함수 전달하기
+```python
+#매개변수로 받은 함수를 3번 호출하는 함수
+def call_3_times(func):
+    for i in range(3):
+            func()
+def print_hello():
+    print("안녕하세요")
+call_10_times(print_hello)
+
+안녕하세요
+안녕하세요
+안녕하세요
+```
+
+map() 함수: 리스트의 요소를 함수에 넣고 리턴값으로 새로운 리스트를 구성해 주는 함수    
+filter() 함수: 리스트의 요소를 함수에 넣고 리턴된 값이 True인 것으로, 새로운 리스트를 구성해주는 함수
+```python
+map(함수, 리스트)
+filter(함수, 리스트)
+```
+```python
+#함수 선언
+def power(item):
+    retunr item * item
+def under_3(item):
+    return item < 3
+#변수 선언
+list_input_a = [1, 2, 3, 4, 5]
+#map() 함수 사용
+output_a = map(power, list_input_a)
+print("map(power, list_input_a):", output_a)
+print("map(power, list_input_a):", list(output_a))
+print()
+#filter() 함수 사용
+output_b = filter(under_3, list_input_a)
+print("filter(under_3, list_input_a):", output_b)
+print("filter(under_3, list_input_a):", list(output_b))
+
+map(power, list_input_a): <map object at 0x03862270>
+map(power, list_input_a): [1, 4, 9, 16, 25]
+
+filter(under_3, list_input_a): <filter object at 0x03862290>
+filter(under_3, list_input_a): [1, 2]
+# <map object>, <filter object>: 제너레이터(generator)
+```
+제너레이터: 이터레이터를 직접 만들 때 사용하는 코드
+
+람다: 간단한 함수를 쉽게 선언하는 방법
+```python
+lambda 매개변수: 리턴값
+```
+```python
+#함수 선언
+power = lambda x: x * x
+under_3 = lambda x: x < 3
+#변수 선언
+list_input_a = [1, 2, 3, 4, 5]
+#map() 함수 사용
+output_a = map(power, list_input_a)
+print("map(power, list_input_a):", output_a)
+print("map(power, list_input_a):", list(output_a))
+print()
+#filter() 함수 사용
+output_b = filter(under_3, list_input_a)
+print("filter(under_3, list_input_a):", output_b)
+print("filter(under_3, list_input_a):", list(output_b))
+
+map(power, list_input_a): <map object at 0x03862270>
+map(power, list_input_a): [1, 4, 9, 16, 25]
+
+filter(under_3, list_input_a): <filter object at 0x03862290>
+filter(under_3, list_input_a): [1, 2]
+```
+```python
+#변수 선언
+list_input_a = [1, 2, 3, 4, 5]
+#map() 함수 사용
+output_a = map(lambda x: x * x, list_input_a)
+print("map(power, list_input_a):", output_a)
+print("map(power, list_input_a):", list(output_a))
+print()
+#filter() 함수 사용
+output_b = filter(lambda x: x < 3, list_input_a)
+print("filter(under_3, list_input_a):", output_b)
+print("filter(under_3, list_input_a):", list(output_b))
+
+map(power, list_input_a): <map object at 0x03862270>
+map(power, list_input_a): [1, 4, 9, 16, 25]
+
+filter(under_3, list_input_a): <filter object at 0x03862290>
+filter(under_3, list_input_a): [1, 2]
+```
+
+매개변수가 여러 개인 람다
+```python
+lambda x, y: x * y
+```
+
+### (3) 파일 처리
+파일 열고 닫기
+- open() 함수
+```python
+파일 객체 = open(문자열: 파일 경로, 문자열: 읽기 모드)
+```
+w: write 모드(새로 쓰기 모드)   
+a: append 모드(뒤에 이어서 쓰기 모드)   
+r: read 모드(읽기 모드)
+ 
+- close() 함수
+```python
+파일 객체.close()
+```
+```python
+#파일을 엽니다.
+file = open("basic.txt", "w")
+#파일에 텍스트를 씁니다.
+file.write("Hello Python Programming...!")
+#파일을 닫습니다.
+file.close()
+```
+
+with 키워드: 파일을 열고 닫지 않는 실수를 방지
+```python
+with open(문자열: 파일 경로, 문자열: 모드) as 파일 객체:
+    문장
+```
+```python
+#파일을 엽니다.
+with open("basic.txt", "w") as file:
+    #파일에 텍스트를 씁니다.
+    file.write("Hello Python Programming...!")
+```
+
+텍스트 읽기
+```python
+파일 객체.read()
+```
+
+텍스트 한 줄씩 읽기    
+- CSV, XML, JSON 등이 있음
+```python
+#랜덤한 숫자를 만들기 위해 가져옵니다.
+import random#간단한 한글 리스트를 만듭니다.
+hanguls = list("가나다라마바사아자차카타파하")
+#파일을 쓰기 모드로 엽니다.
+with open("info.txt", "w") as file:
+    for i in range(1000):
+        #랜덤한 값으로 변수를 생성합니다.
+        name = random.choice(hanguls) + random.choice(hanguls)
+        weight = random.randrange(40, 100)
+        height = random.randrange(140, 200)
+        #텍스트를 씁니다.
+        file.write("{}, {}, {}\n".format(name, weight, height))
+
+다자, 98, 171
+나차, 60, 171
+타카, 56, 153
+...생략...
+```
+```python
+for 한 줄을 나타내는 문자열 in 파일 객체:
+    처리
+```
