@@ -158,5 +158,15 @@ int main() {
 		p = p->NextNode;
 	}
 
-	printf("%p", FindNode(5));
+	printf("%p\n", FindNode(5));
+
+	p = Head->NextNode;
+	Node* tmp = p->NextNode;
+	while (p != Tail) { // 동적할당 해제
+		DestroyNode(p);
+		p = tmp;
+		tmp = p->NextNode;
+	}
+	free(Tail); // Tail부터 동적할당 해제
+	free(Head); // Head 동적할당 해제
 }
