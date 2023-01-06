@@ -85,7 +85,7 @@ int RemoveNode(int data) { // 노드 제거
 	while (p != Tail) {
 		if (p->data == data) {
 			tmp->NextNode = p->NextNode;
-			free(p);
+			DestroyNode(p);
 			return data;
 		}
 
@@ -111,7 +111,7 @@ Node* InsertNode(int Current, int data) { // 노드 삽입
 	NewNode->NextNode = p->NextNode;
 	p->NextNode = NewNode;
 	
-	return p->NextNode; // 삽입한 data의 주소값
+	return NewNode; // 삽입한 data의 주소값
 }
 
 int CountNode(Node* Head) { // 노드 개수 세기
