@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #pragma warning(disable:4996)
 
-typedef struct Node {
+typedef struct Node { // 노드 구조체 선언
 	int data;
 	struct Node* NextNode;
 }Node;
