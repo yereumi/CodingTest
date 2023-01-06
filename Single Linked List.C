@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #pragma warning(disable:4996)
 
-typedef struct Node { // 노드 구조체 선언
+typedef struct Node { 
 	int data;
 	struct Node* NextNode;
 }Node;
@@ -38,10 +38,27 @@ void LinkHeadTail() { //Head Tail 연결
 
 void AppendNode(int data) { // 노드 추가
 	Node* NewNode = CreateNode(data);
+
+	// Head 다음에 추가할 때 (Tail 전->성공, 중간에 추가하는 것도 해보기->삽입)
+	/*
 	Node* tmp = Head->NextNode;
 	Head->NextNode = NewNode;
 	NewNode->NextNode = tmp;
-	// Head 다음에 추가할 때 (Tail 전, 중간에 추가하는 것도 해보기)
+	*/
+
+	// Tail 직전에 추가할 때
+	Node* p = Head;
+	while (1) {
+		if (p->NextNode == Tail) {
+			p->NextNode = NewNode;
+			NewNode->NextNode = Tail;
+			break;
+		}
+		
+		else {
+			p = p->NextNode;
+		}
+	}
 }
 
 Node* FindNode(int data) { // 노드 탐색
