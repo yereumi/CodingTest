@@ -36,7 +36,7 @@ void LinkHeadTail() { //Head Tail 연결
 	Tail->NextNode = NULL;	
 }
 
-Node* AppendNode(int data) { // 노드 추가
+void AppendNode(int data) { // 노드 추가
 	Node* NewNode = CreateNode(data);
 	Node* tmp = Head->NextNode;
 	Head->NextNode = NewNode;
@@ -93,13 +93,13 @@ Node* InsertNode(int Current, int data) { // 노드 삽입
 
 	NewNode->NextNode = p->NextNode;
 	p->NextNode = NewNode;
-
-	return p;
+	
+	return p->NextNode; // 삽입한 data의 주소값
 }
 
 int CountNode(Node* Head) { // 노드 개수 세기
 	int cnt = 0;
-	Node* Current = Head;
+	Node* Current = Head->NextNode;
 
 	while (Current != Tail) {
 		cnt++;
@@ -107,4 +107,39 @@ int CountNode(Node* Head) { // 노드 개수 세기
 	}
 
 	return cnt;
+}
+
+int main() {
+	LinkHeadTail();
+
+	AppendNode(1);
+	AppendNode(2);
+	AppendNode(3);
+
+	Node* p = Head->NextNode;
+	while (p != Tail) {
+		printf("Append %d\n", p->data);
+		p = p->NextNode;
+	}
+
+	RemoveNode(3);
+
+	p = Head->NextNode;
+	while (p != Tail) {
+		printf("Remove %d\n", p->data);
+		p = p->NextNode;
+	}
+
+	int cnt = CountNode(Head);
+	printf("%d\n", cnt);
+
+	InsertNode(2, 10);
+
+	p = Head->NextNode;
+	while (p != Tail) {
+		printf("Insert %d\n", p->data);
+		p = p->NextNode;
+	}
+
+	printf("%p", FindNode(5));
 }
