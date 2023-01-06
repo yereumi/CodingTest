@@ -100,13 +100,14 @@ int RemoveNode(int data) { // 노드 제거
 }
 
 Node* InsertNode(int Current, int data) { // 노드 삽입
-	Node* NewNode = CreateNode(data);
 	Node* p = FindNode(Current);
 
 	if (p == -1) {
 		printf("Insert: Not Found!!\n");
 		return -1;
 	}
+	
+	Node* NewNode = CreateNode(data); // p를 정의한 뒤에 NewNode를 정의해야하는 이유: p가 -1일 경우 새로운 노드를 생성만 하고 프로그램 종료됨
 
 	NewNode->NextNode = p->NextNode;
 	p->NextNode = NewNode;
