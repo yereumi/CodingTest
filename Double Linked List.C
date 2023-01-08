@@ -48,6 +48,8 @@ void AppendNode(int data) { // 노드 추가
 	Node* tmp = Head->NextNode;
 	Head->NextNode = NewNode;
 	NewNode->NextNode = tmp;
+	tmp->PrevNode = NewNode;
+	NewNode->PrevNode = Head;
 	*/
 
 	// Tail 직전에 추가할 때
