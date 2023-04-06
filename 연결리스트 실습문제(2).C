@@ -73,7 +73,7 @@ Node* appendTerm(Node* k, int c, int e) { // 항 추가 함수
 	//t->next = NULL; // next 노드 초기화
 	k->next = t; // 이전 노드(k)와 연결
 
-	return t;
+	return t; // 새로 추가한 항 반환(여기서 틀렸었음)
 }
 
 Node* addPoly(Node* x, Node* y) { // 다항식 연산 함수
