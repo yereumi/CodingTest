@@ -64,6 +64,7 @@ void destroynode(Node* x) { // 노드 종료 함수
 		tmp1 = tmp2;
 	}
 }
+
 Node* appendTerm(Node* k, int c, int e) { // 항 추가 함수
 	Node* t = createnode(); // 새로운 노드(항) 생성
 
