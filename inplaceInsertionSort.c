@@ -17,7 +17,7 @@ int* sort(int* arr, int idx) {
 }
 
 int main() {
-	int n, * arr, minIdx, tmp;
+	int n, * arr;
 	scanf("%d", &n);
 
 	arr = (int*)malloc(n * sizeof(int));
