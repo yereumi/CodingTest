@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<time.h>
+#pragma warning(disable:4996);
+
+int findKthSmallest(int* L, int n, int k);
+int* buildList(int n, int min, int max);
+void writeList(int* L);
+
+int main() {
+	int* L;
+	L = buildList(10, 1, 100);
+	writeList(L);
+
+	return 0;
+}
+
+int findKthSmallest(int* L, int n, int k) {
+
+}
+
+int* buildList(int n, int min, int max) {
+	srand(time(NULL));
+	int* arr = (int*)malloc((n + 1) * sizeof(int));
+
+	for (int i = 1; i <= n; i++) {
+		arr[i] = rand() % (max - min + 1) + min;
+	}
+
+	return arr;
+}
+
+void writeList(int* L) {
+	for (int i = 1; i <= 10; i++) {
+		printf("%d ", L[i]);
+	}
+	printf("\n");
+
+	return;
+}
