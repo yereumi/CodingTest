@@ -28,20 +28,20 @@ Node* init() {
 	return root;
 }
 
-int isRoot(Node* n) {
-	if (n->parent == NULL)
+int isRoot(Node* p) {
+	if (p->parent == NULL)
 		return 1;
 	return 0;
 }
 
-int isExternal(Node* n) {
-	if (n->leftChild == NULL && n->rightChild == NULL)
+int isExternal(Node* p) {
+	if (p->leftChild == NULL && p->rightChild == NULL)
 		return 1;
 	return 0;
 }
 
-int isInternal(Node* n) {
-	if (n->leftChild != NULL || n->rightChild != NULL)
+int isInternal(Node* p) {
+	if (p->leftChild != NULL || p->rightChild != NULL)
 		return 1;
 	return 0;
 }
@@ -169,6 +169,20 @@ void printTree(Node* v) {
 	return;
 }
 
+void freeTree() {
+	Node* p = Root;
+
+	if (isExternal(p)) {
+		free(p);
+		return;
+	}
+	else {
+		freeTree(p->leftChild);
+		freeTree(p->rightChild);
+		free(p);
+	}
+}
+
 int main() {
 	Root = init();
 
@@ -201,6 +215,8 @@ int main() {
 		else if (f == 'q')
 			break;
 	}
+
+	freeTree();
 
 	return 0;
 }
