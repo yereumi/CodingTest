@@ -24,7 +24,7 @@ Node* getNode() { // 노드 생성 함수
 bucket* H; // 버킷 리스트 정의
 int M; // 버킷 크기 전역변수로 정의
 
-void initBucketArray() { // 버킷 리스트트 시작 함수
+void initBucketArray() { // 버킷 리스트 시작 함수
 	H = (bucket*)malloc(M * sizeof(bucket));
 
 	for (int i = 0; i < M; i++) { // M개의 버킷의 Head 생성
@@ -66,7 +66,7 @@ void insertItem(int k) { // 버킷 리스트의 키 삽입 함수
 	return;
 }
 
-int removeItem(int k) { // 버킷 리스트트에 있는 키 삭제 함수
+int removeItem(int k) { // 버킷 리스트에 있는 키 삭제 함수
 	int v = hash(k); // 키의 해쉬값을 v에 저장
 	int cnt = 1; // 우선순위 저장 변수 cnt
 	Node* p = H[v].Head->next, *q, * tmp; // H를 순회할 노드 포인터 p(H[v]의 Head의 next부터 시작)
