@@ -108,7 +108,7 @@ void print() { // 버킷 리스트에 있는 모든 노드 출력 함수
 	printf("\n");
 }
 
-void freeHash() { // 버킷 리스트트 동적할당 해제 함수
+void freeHash() { // 버킷 리스트 동적할당 해제 함수
 	Node* p = NULL, * q = NULL;
 
 	for (int i = 0; i < M; i++) {
