@@ -21,10 +21,10 @@ Node* getNode() { // 노드 생성 함수
 	return NewNode;
 }
 
-bucket* H; // 해쉬 테이블 정의
+bucket* H; // 버킷 리스트 정의
 int M; // 버킷 크기 전역변수로 정의
 
-void initBucketArray() { // 해쉬 테이블(버킷 리스트) 시작 함수
+void initBucketArray() { // 버킷 리스트트 시작 함수
 	H = (bucket*)malloc(M * sizeof(bucket));
 
 	for (int i = 0; i < M; i++) { // M개의 버킷의 Head 생성
@@ -52,7 +52,7 @@ int findElement(int k) { // 키 찾는 함수
 	return 0; // H에 찾는 키값이 없으면 0 반환
 }
 
-void insertItem(int k) { // 해쉬 테이블에 키 삽입 함수
+void insertItem(int k) { // 버킷 리스트의 키 삽입 함수
 	int v = hash(k); // 키의 해쉬값을 v에 저장
 	Node* NewNode = getNode(); // 새로운 노드 생성
 	NewNode->e = k; // 새 노드의 키값에 k 저장
@@ -66,7 +66,7 @@ void insertItem(int k) { // 해쉬 테이블에 키 삽입 함수
 	return;
 }
 
-int removeItem(int k) { // 해쉬 테이블에 있는 키 삭제 함수
+int removeItem(int k) { // 버킷 리스트트에 있는 키 삭제 함수
 	int v = hash(k); // 키의 해쉬값을 v에 저장
 	int cnt = 1; // 우선순위 저장 변수 cnt
 	Node* p = H[v].Head->next, *q, * tmp; // H를 순회할 노드 포인터 p(H[v]의 Head의 next부터 시작)
@@ -97,7 +97,7 @@ int removeItem(int k) { // 해쉬 테이블에 있는 키 삭제 함수
 	return 0;
 }
 
-void print() { // 해쉬 테이블에 있는 모든 노드 출력 함수
+void print() { // 버킷 리스트에 있는 모든 노드 출력 함수
 	for (int i = 0; i < M; i++) {
 		Node* p = H[i].Head->next;
 		while (p != NULL) {
@@ -108,7 +108,7 @@ void print() { // 해쉬 테이블에 있는 모든 노드 출력 함수
 	printf("\n");
 }
 
-void freeHash() { // 해쉬 테이블 동적할당 해제 함수
+void freeHash() { // 버킷 리스트트 동적할당 해제 함수
 	Node* p = NULL, * q = NULL;
 
 	for (int i = 0; i < M; i++) {
