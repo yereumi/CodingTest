@@ -1,0 +1,116 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<time.h>
+#pragma warning(disable:4996);
+
+int findKthSmallest(int n, int k);
+int* buildList(int n, int min, int max);
+void writeList();
+void rBuildHeap(int idx);
+void buildHeap(int idx);
+void downHeap(int idx, int last);
+int isExternal(int idx);
+void swap(a, b);
+int parent(int idx);
+int leftChild(int idx);
+int rightChild(int idx);
+
+int* L;
+
+int main() {
+	L = buildList(10, 1, 100);
+	writeList(L);
+
+	return 0;
+}
+
+int findKthSmallest(int n, int k) {
+	
+}
+
+int* buildList(int n, int min, int max) {
+	srand(time(NULL));
+	int* arr = (int*)malloc((n + 1) * sizeof(int));
+
+	for (int i = 1; i <= n; i++) {
+		arr[i] = rand() % (max - min + 1) + min;
+	}
+
+	return arr;
+}
+
+void writeList() {
+	for (int i = 1; i <= 10; i++) {
+		printf("%d ", L[i]);
+	}
+	printf("\n");
+
+	return;
+}
+
+void rBuildHeap(int idx) {
+	if (isExternal(idx))
+		return;
+
+	rBuildHeap(leftChild(idx));
+	rBuildHeap(rightChild(idx));
+	downHeap(idx);
+
+	return;
+}
+
+void buildHeap(int idx) {
+	for (int i = n / 2; i > 0; i--) {
+		downHeap(i);
+	}
+
+	return;
+}
+
+void downHeap(int idx) {
+	int tmpN = idx, bigger;
+
+	if (isExternal(leftChild(tmpN)) && isExternal(rightChild(tmpN)))
+		return;
+
+	// left는 무조건 internal 이다.
+	bigger = leftChild(tmpN);
+
+	if (!isExternal(rightChild(tmpN))) {
+		if (H[rightChild(tmpN)] > H[bigger])
+			bigger = rightChild(tmpN);
+	}
+
+	if (H[tmpN] > H[bigger])
+		return;
+
+	swap(tmpN, bigger);
+	downHeap(bigger);
+}
+
+int isExternal(int idx) {
+	if (idx > n)
+		return 1;
+	return 0;
+}
+
+void swap(a, b) {
+	int tmp;
+
+	tmp = L[a];
+	L[a] = L[b];
+	L[b] = tmp;
+}
+
+int parent(int idx) {
+	return idx / 2;
+}
+
+int leftChild(int idx) {
+	return idx * 2;
+}
+
+int rightChild(int idx) {
+	return idx * 2 + 1;
+}
